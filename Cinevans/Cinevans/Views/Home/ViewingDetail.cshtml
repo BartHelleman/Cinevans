@@ -1,0 +1,72 @@
+﻿@model Cinevans.Domain.Entities.Viewing
+@{
+    ViewBag.Title = "ViewingDetail";
+}
+<div class="movie-detail-back-button">
+    @Html.ActionLink("Terug", "Index")
+</div>
+<div class="movie-detail-order-button">
+    @Html.ActionLink("Kaartjes", "Rates", "Ticket", new { viewingId = Model.ViewingId }, null)
+</div>
+<div class="movie-detail">
+    <div class="movie-detail-poster"><img src="@Model.Movie.MovieImage" /></div>
+    <div class="movie-detail-description">
+        <div class="movie-description-content">
+            <h1>@Model.Movie.Titel (@Model.Movie.Language)</h1>
+            Starttijd: @((Model.StartTime.Hour < 10 ? "0" : "") + Model.StartTime.Hour):@((Model.StartTime.Minute < 10 ? "0" : "") + Model.StartTime.Minute)
+            <br />
+            Zaal: @Model.RoomId
+            <br />
+            @Model.Movie.Duration minuten
+            <br />
+            Cast: @foreach (var cast in Model.Movie.Casts)
+            {
+                @cast.Name @:&nbsp;
+            }
+            <br />
+            Directors: @foreach (var director in Model.Movie.Directors)
+            {
+                @director.Name @:&nbsp;
+            }
+            <br />
+            Genres: @foreach (var genre in Model.Movie.Genres)
+            {
+                @genre.Name @:&nbsp;
+                    }
+            <br />
+            @if (Model.Movie.is3D)
+            {
+                <p>
+                    3D
+                </p>
+            }
+            <div class="movie-detail-icons">
+                @switch (Model.Movie.Age)
+                {
+                    case 18:
+                        <img src="~/Content/icons/ageIcon18.png" />
+                        break;
+                    case 16:
+                    <img src="~/Content/icons/ageIcon16.png" />
+                        break;
+                    case 12:
+                    <img src="~/Content/icons/ageIcon12.png" />
+                        break;
+                    case 6:
+                    <img src="~/Content/icons/ageIcon6.png" />
+                        break;
+                    default:
+                    <img src="~/Content/icons/ageIconAll.png" />
+                        break;
+                }
+                @if (Model.Room.Accessbility)
+                {
+                    <img src="~/Content/icons/ageIconWheelchair.png" />
+                }
+                <br />
+                @Model.Movie.Description
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,203 @@
+﻿@model Cinevans.Domain.Entities.Movie
+@using Cinevans.Web.Controllers
+@{
+    ViewBag.Title = "MovieDetail";
+}
+
+<script>
+    (function (d, s, id) {
+        var js, stags = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";
+        stags.parentNode.insertBefore(js, stags);
+    })(document, 'script', 'imdb-rating-api');</script>
+
+<div class="movie-detail-back-button">
+    @Html.ActionLink(Resource.Terug, "Movies")
+</div>
+<div class="movie-detail">
+    <h1 class="movie-detail-title">@Model.Titel (@Model.Language)</h1>
+    <div class="movie-detail-poster"><img src="@Model.MovieImage" /></div>
+    <div class="movie-detail-description-web">
+        <div class="movie-description-content-web">
+            <iframe class="yt" width="427" height="240" src="@Model.MovieTrailerUrl" frameborder="0" allowfullscreen></iframe>
+            <div class="movie-description-content-details">
+                <br />
+                @Resource.Lengte: @Model.Duration @Resource.Minuten
+                <br />
+                @Resource.Rollen: @foreach (var cast in Model.Casts)
+                {
+                    @cast.Name @:&nbsp;
+                }
+                <br />
+                @Resource.Regisseurs: @foreach (var director in Model.Directors)
+                {
+                    @director.Name @:&nbsp;
+                }
+                <br />
+                Genres: @foreach (var genre in Model.Genres)
+                {
+                    @genre.Name @:&nbsp;
+                }
+                <br />
+                @if (Model.is3D)
+                {
+                    <p>
+                        3D
+                    </p>
+                }
+            </div>
+        </div>
+        <div class="movie-detail-icons">
+            @switch (Model.Age)
+            {
+                case 18:
+                    <img src="~/Content/icons/ageIcon18.png" />
+                    break;
+                case 16:
+                <img src="~/Content/icons/ageIcon16.png" />
+                    break;
+                case 12:
+                <img src="~/Content/icons/ageIcon12.png" />
+                    break;
+                case 6:
+                <img src="~/Content/icons/ageIcon6.png" />
+                    break;
+                default:
+                <img src="~/Content/icons/ageIconAll.png" />
+                    break;
+            }
+        </div>
+        <div class="movie-detail-description-text">
+            @Resource.Beschrijving:
+            <br />
+            @if (System.Globalization.CultureInfo.CurrentCulture.Name == "nl")
+            {
+            @Model.Description
+            }
+            else
+            {
+                @Model.EnglishDescription
+            }
+        </div>
+        <div class="imdb">
+            <span class="imdbRatingPlugin" data-user="ur65758820" data-title="tt1663202" data-style="p1">
+                <a href="@Model.ImdbLink">
+                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" />
+                </a>
+            </span>
+        </div>
+        <div class="movie-user-review">
+            <h4>@Resource.BeoordelingTitel</h4>
+            <div class="float-right">
+                @switch(Model.UserReview)
+                {
+                    case 5:
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 1 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 2 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 3 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 4 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 5 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        break;
+                    case 4:
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 1 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 2 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 3 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 4 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 5 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        break;
+                    case 3:
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 1 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 2 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 3 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 4 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 5 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        break;
+                    case 2:
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 1 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 2 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 3 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 4 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 5 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        break;
+                    case 1:
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 1 }, null)'><img class="stars" src="~/Images/star2.png" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 2 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 3 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 4 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        <a href='@Url.Action("UpdateUserReview", "Movie", new {movieId = Model.MovieId, rating = 5 }, null)'><img class="stars" src="~/Images/BlackStar.PNG" /></a>
+                        break;
+                    default:
+                        break;
+                }
+            </div>
+            <div>
+                <h3>Reviews</h3>
+                @{
+                    IEnumerable<Cinevans.Domain.Entities.Review> reviews = ((HomeController)this.ViewContext.Controller).GetReviews(Model.MovieId);
+                }
+                @foreach(var r in reviews)
+                {
+                    <div class="movie-detail-description-text">
+                        @r.ReviewMessage <br />
+                        @r.UserName
+                    </div>
+                }
+                @if(User.IsInRole("Klant"))
+                {
+                    <br />
+                    <p>Review toevoegen</p>
+                    <form action="@Url.Action("AddReviewMovie", "Home")" method="post">
+                        <input type="text" name="reviewMessage" style='color:black' size="80" />
+                        <input type="hidden" name="userName" value="@User.Identity.Name" />
+                        <input type="hidden" name="movieId" value="@Model.MovieId.ToString()" />
+                        <input type="submit" value="Toevoegen" class="btn inschreibButton" />
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="movieViewings">
+    <h2>@Resource.Voorstellingen:</h2>
+    <div class="row">
+        @for (int i = 0; i < 7; i++)
+        {
+            <div class="movie-viewings-ul">
+                <ul>
+                    @if (System.Globalization.CultureInfo.CurrentCulture.Name == "nl")
+                    {
+                    <li class="movie-viewings-days"><h3>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.AddDays(i).DayOfWeek) @DateTime.Now.AddDays(i).ToString("d MMM", new System.Globalization.CultureInfo("nl"))</h3></li>
+                    }
+                    else
+                    {
+                        <li class="movie-viewings-days"><h3>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.AddDays(i).DayOfWeek) @DateTime.Now.AddDays(i).ToString("d MMM")</h3></li>
+                    }
+
+                    @foreach (var m in Model.Viewings)
+                    {
+                        if (m.StartTime.Date == DateTime.Now.AddDays(i).Date)
+                        {
+                            <li class="movie-viewings-list"><h3 class="btn btn-info">@Html.ActionLink(m.StartTime.ToString("HH:mm"), "Rates", "Ticket", new { viewingId = m.ViewingId }, null)</h3></li>
+
+                        }
+                    }
+                </ul>
+
+
+
+            </div>
+
+        }
+    </div>
+</div>
+
+
+
+
+
+

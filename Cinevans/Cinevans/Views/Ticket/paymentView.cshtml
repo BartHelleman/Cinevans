@@ -1,0 +1,120 @@
+﻿
+
+@{
+    ViewBag.Title = "PaymentView";
+}
+
+<div style="float left" class="movie-detail-back-button">
+    <a href="javascript:history.back()">Terug</a>
+</div>
+
+<h2 style="text-align: center;">Betalen</h2>
+
+<div class="text-center payBlock">
+    <select class="selectBank">
+        <option value="rabobank">Rabobank</option>
+        <option value="ing">ING</option>
+        <option value="knab">Knab bank</option>
+        <option value="abn">ABN AMRO</option>
+    </select>
+    <div id="pinfield"></div>
+    <div class="buttonsPayment">
+        <div class="round-button-circle1">
+            <div onclick="onStopClick()" class="round-buttonStop">
+                Stop
+            </div>
+        </div>
+        <div class="round-button-circle2">
+            <div onclick="onCorrClick()" class="round-buttonCorr">
+                Corr
+
+
+            </div>
+
+        </div>
+        <div class="round-button-circle3">
+            <div onclick="onOkClick()" class="round-buttonOk">
+                @Html.ActionLink("Ok", "Success", "Ticket")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="center-block" style="width: 400px; clear:both;">
+    <div class="row" style="margin-bottom:25px;">
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_1.png" width="100px" /></div>
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_2.png" width="100px" /></div>
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_3.png" width="100px" /></div>
+    </div>
+    <div class="row" style="margin-bottom:25px;">
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_4.png" width="100px" /></div>
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_5.png" width="100px" /></div>
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_6.png" width="100px" /></div>
+    </div>
+    <div class="row" style="margin-bottom:25px;">
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_7.png" width="100px" /></div>
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_8.png" width="100px" /></div>
+        <div class="col-md-4" onclick="onClick()"><img src="~/Images/number_9.png" width="100px" /></div>
+    </div>
+    <div class="row" style="margin-bottom:25px;" onclick="onClick()">
+        <img src="~/Images/number_0.png" width="100px" class="center-block" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    var pin = "";
+    var clicks = 0;
+
+    function onClick() {
+        if (clicks >= 4) {
+        } else {
+            clicks += 1;
+            switch (clicks) {
+                case 1:
+                    pin = "*"
+                    break;
+                case 2:
+                    pin = "**"
+                    break;
+                case 3:
+                    pin = "***"
+                    break;
+                case 4:
+                    pin = "****"
+                    break;
+            }
+            document.getElementById("pinfield").innerHTML = pin;
+        }
+    }
+
+    function onCorrClick() {
+        if (clicks == 0) {
+        } else {
+            clicks -= 1;
+            switch (clicks) {
+                case 0:
+                    pin = ""
+                    break;
+                case 1:
+                    pin = "*"
+                    break;
+                case 2:
+                    pin = "**"
+                    break;
+                case 3:
+                    pin = "***"
+                    break;
+            }
+            document.getElementById("pinfield").innerHTML = pin;
+        }
+    }
+
+    function onStopClick() {
+        clicks = 0;
+        pin = "";
+        document.getElementById("pinfield").innerHTML = pin;
+    }
+</script>

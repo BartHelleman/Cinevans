@@ -1,0 +1,82 @@
+﻿@{ 
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+<body ng-app="BlankApp" ng-cloak>
+    <div class="container">
+        <div class="header">
+            <img src="~/images/cinevansLogo.png" width="400" alt="logo" />
+            @Html.Partial("_LoginPartial")
+
+            
+            @helper selected(string c, string culture)
+            {
+                if (c == culture)
+                {
+                        @:checked="checked"
+                    }
+                }
+
+            @Html.ActionLink("NL", "SetCulture","Home",new { culture = "nl"}, new { @class = "iconNL" })
+            @Html.ActionLink("eng", "SetCulture", "Home", new { culture = "en-US" }, new { @class = "iconEN" })
+           
+
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>@Html.ActionLink(Cinevans.Language.Resource.Filmoverzicht, "Movies", "Home")</li>
+                <!--<li>Html.ActionLink("Weekoverzicht", "Index", "Home")</li> -->
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <!--<li>Html.ActionLink("Code invoeren", "PrintTickets", "Ticket")</li>-->
+                @if (User.IsInRole("Manager"))
+                {
+                    <li>@Html.ActionLink("Financieel", "Financial", "Manager")</li>
+                }
+                else if (User.IsInRole("Backoffice"))
+                {
+                    <li>@Html.ActionLink("Film", "AddMovie", "Backoffice")</li>
+                    <li>@Html.ActionLink("Voorstelling", "AddViewing", "Backoffice")</li>
+                }
+                else if (User.IsInRole("Kassamedewerker"))
+                {
+                    <li>@Html.ActionLink("Abonnement", "Subscription", "Paydesk")</li>
+                    <li>@Html.ActionLink("Beschikbare plaatsen", "Availibility", "Paydesk")</li>
+                }
+                </ul>
+            </div>
+
+            @RenderBody()
+        </div>
+
+
+
+        <div class="footer">
+        <form action="@Url.Action("NewsLetter", "Home")" method="post">             
+            <div class="footerFormColor">
+                @Resource.SchrijfIn
+            </div> 
+            <input type="text" name="email" />
+            <input type="submit" value="@Resource.Inschrijven" class="btn inschreibButton" />
+        </form>
+    </div>
+    <div class="clear"></div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

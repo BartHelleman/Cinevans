@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D55DF819-0F0A-4F2F-9D3C-A8C4FFC40658}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cinevans.Domain</RootNamespace>
+    <AssemblyName>Cinevans.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\ICinemaRepository.cs" />
+    <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\CinemaRepository.cs" />
+    <Compile Include="Entities\Cast.cs" />
+    <Compile Include="Entities\Cinema.cs" />
+    <Compile Include="Entities\Director.cs" />
+    <Compile Include="Entities\Genre.cs" />
+    <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Entities\NewsLetter.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\Rate.cs" />
+    <Compile Include="Entities\Review.cs" />
+    <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\Row.cs" />
+    <Compile Include="Entities\Seat.cs" />
+    <Compile Include="Entities\Subscription.cs" />
+    <Compile Include="Entities\Ticket.cs" />
+    <Compile Include="Entities\Viewing.cs" />
+    <Compile Include="Migrations\201603022010124_Initializer.cs" />
+    <Compile Include="Migrations\201603022010124_Initializer.Designer.cs">
+      <DependentUpon>201603022010124_Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603071050574_added cast en director.cs" />
+    <Compile Include="Migrations\201603071050574_added cast en director.Designer.cs">
+      <DependentUpon>201603071050574_added cast en director.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603071122555_added movietrailer website and imdb link.cs" />
+    <Compile Include="Migrations\201603071122555_added movietrailer website and imdb link.Designer.cs">
+      <DependentUpon>201603071122555_added movietrailer website and imdb link.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603141215183_newsletter.cs" />
+    <Compile Include="Migrations\201603141215183_newsletter.Designer.cs">
+      <DependentUpon>201603141215183_newsletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603161249380_orderid.cs" />
+    <Compile Include="Migrations\201603161249380_orderid.Designer.cs">
+      <DependentUpon>201603161249380_orderid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603171120260_order verwijderd uit ticket.cs" />
+    <Compile Include="Migrations\201603171120260_order verwijderd uit ticket.Designer.cs">
+      <DependentUpon>201603171120260_order verwijderd uit ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603170858391_englishvalues.cs" />
+    <Compile Include="Migrations\201603170858391_englishvalues.Designer.cs">
+      <DependentUpon>201603170858391_englishvalues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603171213168_test2.cs" />
+    <Compile Include="Migrations\201603171213168_test2.Designer.cs">
+      <DependentUpon>201603171213168_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604041254208_Subscription.cs" />
+    <Compile Include="Migrations\201604041254208_Subscription.Designer.cs">
+      <DependentUpon>201604041254208_Subscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604041256188_Review.cs" />
+    <Compile Include="Migrations\201604041256188_Review.Designer.cs">
+      <DependentUpon>201604041256188_Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604042049175_Review1.cs" />
+    <Compile Include="Migrations\201604042049175_Review1.Designer.cs">
+      <DependentUpon>201604042049175_Review1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603022010124_Initializer.resx">
+      <DependentUpon>201603022010124_Initializer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603071050574_added cast en director.resx">
+      <DependentUpon>201603071050574_added cast en director.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603071122555_added movietrailer website and imdb link.resx">
+      <DependentUpon>201603071122555_added movietrailer website and imdb link.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603141215183_newsletter.resx">
+      <DependentUpon>201603141215183_newsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603161249380_orderid.resx">
+      <DependentUpon>201603161249380_orderid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603171120260_order verwijderd uit ticket.resx">
+      <DependentUpon>201603171120260_order verwijderd uit ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603170858391_englishvalues.resx">
+      <DependentUpon>201603170858391_englishvalues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603171213168_test2.resx">
+      <DependentUpon>201603171213168_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604041254208_Subscription.resx">
+      <DependentUpon>201604041254208_Subscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604041256188_Review.resx">
+      <DependentUpon>201604041256188_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604042049175_Review1.resx">
+      <DependentUpon>201604042049175_Review1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,559 @@
+﻿@using Cinevans.Domain.Entities
+@model IEnumerable<Viewing>
+
+<h2>@Resource.DezeWeekIndeBioscoop</h2>
+
+<div ng-cloak class="movieViewings">
+    <div class="movieViewingsHome">
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom style="background-color: #4a4d57;">
+                <md-tab label="@Resource.Donderdag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Thursday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.Vrijdag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Friday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.Zaterdag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Saturday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.Zondag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Sunday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.Maandag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Monday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.Dinsdag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Tuesday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.Woensdag">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.DayOfWeek == DayOfWeek.Wednesday)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+    <div class="movieViewingsHome">
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom style="background-color: #4a4d57;">
+                <md-tab label="@Resource.NederlandsGesproken">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.Day == DateTime.Now.Day && item.Movie.Language.Equals("Dutch"))
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="3D">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">3D</h1>
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.Day == DateTime.Now.Day && item.Movie.is3D == true)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+                <md-tab label="@Resource.RolstoelToegankelijk">
+                    <md-content class="md-padding">
+                        @foreach (var item in Model)
+                        {
+                            if (item.StartTime.Day == DateTime.Now.Day && item.Room.Accessbility == true)
+                            {
+                                <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+                                    <div class="movie">
+                                        <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                                        <div class="movie-description">
+                                            <div class="movie-description-content">
+                                                @item.Movie.Titel (@item.Movie.Language)
+                                                <br />
+                                                @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                                                <br />
+                                                @Resource.Zaal @item.RoomId
+                                                <br />
+                                                @item.Movie.Duration @Resource.Minuten
+                                                @if (item.Movie.is3D)
+                                                {
+                                                    <p>
+                                                        3D
+                                                    </p>
+                                                }
+                                                <div class="movie-detail-icons">
+                                                    @switch (item.Movie.Age)
+                                                    {
+                                                        case 18:
+                                                            <img src="~/Content/icons/ageIcon18.png" />
+                                                            break;
+                                                        case 16:
+                                                        <img src="~/Content/icons/ageIcon16.png" />
+                                                            break;
+                                                        case 12:
+                                                        <img src="~/Content/icons/ageIcon12.png" />
+                                                            break;
+                                                        case 6:
+                                                        <img src="~/Content/icons/ageIcon6.png" />
+                                                            break;
+                                                        default:
+                                                        <img src="~/Content/icons/ageIconAll.png" />
+                                                            break;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                    </md-content>
+                </md-tab>
+
+            </md-tabs>
+        </md-content>
+    </div>
+</div>
+
+   <!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+<!-- Your application bootstrap  -->
+<script type="text/javascript">
+
+    /**
+     * You must include the dependency on 'ngMaterial'
+     */
+    angular.module('BlankApp', ['ngMaterial']);
+</script>

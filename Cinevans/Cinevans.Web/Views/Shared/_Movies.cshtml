@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Cinevans.Domain.Entities.Movie>
+
+@foreach (var movie in Model)
+{
+    <a href="@Url.Action("MovieDetail",new { movieId = movie.MovieId })">
+        <div class="movie">
+            <div class="movie-poster"><img src="@movie.MovieImage" /></div>
+            <div class="movie-description">
+                <div class="movie-description-content">
+                    @movie.Titel (@movie.Language)
+                    <br />
+                    @movie.Duration @Resource.Minuten
+                    @if (movie.is3D)
+                    {
+                        <p>
+                            3D
+                        </p>
+                    }
+
+                    <div class="movie-icons">
+                        @switch (movie.Age)
+                        {
+                            case 18:
+                                <img src="~/Content/icons/ageIcon18.png" />
+                                break;
+                            case 16:
+                            <img src="~/Content/icons/ageIcon16.png" />
+                                break;
+                            case 12:
+                            <img src="~/Content/icons/ageIcon12.png" />
+                                break;
+                            case 6:
+                            <img src="~/Content/icons/ageIcon6.png" />
+                                break;
+                            default:
+                            <img src="~/Content/icons/ageIconAll.png" />
+                                break;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+}

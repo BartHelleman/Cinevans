@@ -1,0 +1,526 @@
+﻿@font-face {
+    font-family: HNL;
+    src: url(HelveticaNeue-Thin.otf);
+}
+
+body {
+    background-color: #13182A;
+    height: auto;
+}
+
+    body * {
+        color: #D9D7D6;
+        font-family: HNL;
+    }
+
+.container {
+    width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu {
+    background-color: #D9D7D6;
+    font-size: 1.8em;
+    padding: 18px 0 10px;
+}
+
+    .menu ul li {
+        list-style: none;
+        display: inline-block;
+        border-right: 1px solid #333;
+        padding: 0 35px 0 35px;
+    }
+
+        .menu ul li:last-child {
+            border: 0px;
+        }
+
+
+        .menu ul li a {
+            color: #13182A;
+        }
+
+            .menu ul li a:hover {
+                text-decoration: underline !important;
+            }
+
+a {
+    text-decoration: none !important;
+}
+
+    a:hover {
+        color: #282828;
+    }
+
+.navbar-header {
+    width: 100%;
+    font-size: 30px;
+}
+
+.navbar-header-btn, .navbar-header-btn-active {
+    display: inline-block;
+    margin: 16px;
+    padding: 16px 32px;
+    padding-bottom: 8px;
+}
+
+.navbar-header-btn {
+    border-bottom: 2px solid #13172A;
+}
+
+    .navbar-header-btn:hover, .navbar-header-btn-active {
+        border-bottom: 2px solid #4A4D58;
+    }
+
+.navbar-header-btn-txt {
+    font-size: 20px;
+    text-align: center;
+}
+
+.movie, .movie-poster, .movie-description {
+    display: inline-block;
+}
+
+.movie {
+    margin: 0px 16px 32px 16px;
+}
+
+.movie-poster, .movie-description {
+    width: 150px;
+    height: 200px;
+}
+
+.movie-poster {
+    background-color: #D9D7D6;
+}
+
+    .movie-poster img {
+        width: 100%;
+        height: 100%;
+    }
+
+.movie-icons img {
+    width: 20px;
+}
+
+.movie-description {
+    vertical-align: top;
+}
+
+.movie-description-content {
+    margin: 8px;
+}
+
+.movie-description-content-web {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 1px;
+}
+
+.movie-detail-back-button {
+    float: left;
+}
+
+.movie-detail-order-button {
+    float: right;
+}
+
+.movie-detail-back-button {
+    font-size: 20px;
+    background-color: #4A4D58;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px 16px 8px 16px;
+    margin: 16px;
+}
+
+.movie-detail-order-button {
+        font-size: 20px;
+    background-color: #4A4D58;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px 16px 8px 16px;
+    margin: 16px;
+    border: none;
+}
+
+.float-right {
+    text-align: right;
+    width: 15%
+}
+
+.stars {
+    width: 22px;
+    height: 21px;
+}
+
+.movie-detail-order-button2 {
+    font-size: 20px;
+    background-color: #4A4D58;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px 16px 8px 16px;
+    margin: 16px;
+    border: none;
+    margin-top: -170px;
+    float:right;
+}
+
+.movie-print-card-button{
+    font-size: 30px;
+    background-color: #4a4d57;
+    border-radius: 8px;
+    text-align: center;
+    padding: 12px 16px 8px 16px;
+    margin: 16px;
+    margin-left: 0px;
+    height: 70px;
+    width: 500px;
+    color: #d9d7d6;
+}
+
+.movie-detail {
+    clear: both;
+    margin: 16px;
+}
+
+.movie-detail-poster {
+    display: inline-block;
+    background-color: red;
+    width: 25%;
+    min-width: 200px;
+    float: left;
+}
+
+.movie-detail-poster-web {
+    display: inline-block;
+    background-color: red;
+    width: 30%;
+    min-width: 200px;
+    float: left;
+}
+
+.movie-detail-title {
+    margin-bottom:10px;
+}
+
+.yt {
+    vertical-align: top;
+    text-align: right;
+    display: inline-block;
+    margin-bottom: 20px;
+    float: right;
+}
+
+    .movie-detail-poster img {
+        width: 100%;
+    }
+
+.imdb {
+    vertical-align: top;
+    text-align: center;
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 4px;
+}
+
+.movie-detail-description {
+    vertical-align: top;
+    display: inline-block;
+    width: 74%;
+}
+
+.movie-detail-description-text {
+    margin-top: 30px;
+    margin-left: 8px;
+}
+
+.movie-detail-description-web {
+    vertical-align: top;
+    display: inline-block;
+    width: 74%;
+}
+
+.movie-description-content-details {
+}
+
+.movie:hover .movie-description * {
+    color: #4A4D58;
+}
+
+.movie-detail-icons {
+    width: 120px;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+
+.movie-user-review {
+    margin-left: 8px;
+}
+
+.movie-detail-icons img {
+    width: 50px;
+}
+
+#pinfield {
+    width: 210px;
+    height: 95px;
+    text-align: center;
+    margin-right: 48px;
+    font-size: 7em;
+    background-color: #333;
+    margin-bottom: 40px;
+    float: left;
+}
+
+.selectBank {
+    width: 180px;
+    height: 50px;
+    color: black;
+    float: left;
+    margin-right: 80px;
+}
+
+.buttonsPayment {
+    float: left;
+}
+
+.round-button-circle1 {
+    background-color: red;
+    color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    float: left;
+    margin-right: 20px;
+}
+
+.round-button-circle2 {
+    background-color: yellow;
+    color: black;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    float: left;
+    margin-right: 20px;
+}
+
+.round-button-circle3 {
+    background-color: green;
+    color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    float: left;
+}
+
+.round-buttonStop {
+    padding-top: 23px;
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+.round-buttonCorr {
+    padding-top: 23px;
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+.round-buttonOk {
+    padding-top: 23px;
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+.payBlock {
+    width: 800px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input.qtyminus {
+    background-color: transparent;
+    background-image: url(/Images/min_icon.png);
+    background-repeat: no-repeat;
+    background-position: <left|right>;
+    padding- <left|right>: <width of image>px;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+input.qtyplus {
+    background-color: transparent;
+    background-image: url(/Images/plus_icon.png);
+    background-repeat: no-repeat;
+    background-position: <left|right>;
+    padding- <left|right>: <width of image>px;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.tabsdemoDynamicHeight md-content {
+    background-color: transparent !important;
+}
+
+    .tabsdemoDynamicHeight md-content md-tabs {
+        background: #f6f6f6;
+        border: 1px solid #e1e1e1;
+    }
+
+        .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+            background: white;
+        }
+
+    .tabsdemoDynamicHeight md-content h1:first-child {
+        margin-top: 0;
+    }
+
+.movieViewings {
+    margin-top: 25px;
+    clear: both; 
+}
+
+#movieViewings {
+    margin-top: 10%;
+    margin-left: 16px;
+    clear: both; 
+}
+
+.movie-viewings-ul {
+    float: left;
+    width: 100%;
+}
+
+.movie-viewings-list {
+    list-style: none;
+    float: left;
+    margin-right: 10px;
+}
+
+.movie-viewings-days {
+    float: left;
+    list-style: none;
+    margin-right: 10px;
+    width: 15%;
+}
+
+#movieViewings-text {
+    border: 2px solid;
+    width: 60px;
+    padding: 5px;
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: white;
+    background: white;
+}
+
+md-content.md-default-theme, md-content {
+    color: rgba(0,0,0,0.87);
+    background-color: #13182A;
+}
+
+.movieViewingsHome {
+    width: 100%;
+    background-color: #13182A;
+    margin-top: 75px;
+}
+
+.marginClass {
+    margin-right: 10px;
+}
+
+.rowMargin {
+    height: 50px;
+}
+
+#container-movie-list-right {
+    float: right;
+    width: 90%;
+}
+
+.leftbar {
+    float: left;
+    width: 10%;
+}
+
+.leftbar ul li {
+    padding: 5px;
+}
+
+.sort-button-list {
+    list-style: none;
+}
+
+#MicrosoftTranslatorWidget {
+    position: absolute;
+}
+
+.Dark {
+    position: absolute;
+}
+
+.footer {
+    width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 65px;
+    background-color: #D9D7D6;
+    color: #000;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.footerFormColor {
+    color:  #000;
+    float: left;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.inschreibButton {
+    color: #000;
+    background-color: #999;
+    margin-left: 20px;
+}
+
+.iconNL
+{
+     background-image: url(/Images/icon_nl.png);
+    background-repeat: no-repeat;
+     display: block;
+     width: 28px;
+     height: 20px;
+     text-indent: -9999px; /* hides the link text */
+     float: right;
+     margin-left: 5px;
+}
+
+a.iconEN
+{
+     background-image: url(/Images/icon_en.jpg);
+    background-repeat: no-repeat;
+     display: block;
+     width: 28px;
+     height: 20px;
+     text-indent: -9999px; /* hides the link text */
+     float: right;
+}
+
+code-block {
+    border: 1px solid #333;
+}
+
+.clear {
+    clear:both;
+}

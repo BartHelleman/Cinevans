@@ -1,0 +1,278 @@
+﻿@model Cinevans.Domain.Entities.Viewing
+
+@{
+    ViewBag.Title = "Rates";
+}
+
+
+    <div style="float: left" class="movie-detail-back-button">
+        <a href="@Url.Action("ViewingDetail","Home",new { viewingId = Model.ViewingId })">@Resource.Terug</a>
+    </div>
+
+<div class="movie-detail">
+    <div style="width: 100%; float: left">
+        <h2>@Resource.KiesHierUwKaartjes</h2>
+        <h3>@Model.Movie.Titel</h3>
+    </div>
+</div>
+<div class="movie-detail">
+    <div>
+        <div class="movie-detail-poster marginClass" style="float:left; "><img src="@Model.Movie.MovieImage" /></div>
+        
+        @using (Html.BeginForm())
+            {
+            <div style="float: left">
+                <input type="text" name="viewingId" value="@Model.ViewingId" hidden />
+               
+                    <table>
+                    @foreach (var item in Model.Movie.Rates)
+                    {
+                        <tr class="rowMargin">
+                            <td>
+                                @if (System.Globalization.CultureInfo.CurrentCulture.Name == "nl")
+                                {
+                                <h4 class="marginClass">@item.Name (€@item.Price)</h4>
+                                }
+                                else
+                                {
+                                    <h4 class="marginClass">@item.EnglishName (€@item.Price)</h4>
+                                }
+                            </td>
+                                    <td>
+                                        <input type='button' value='' class='qtyminus' field='quantity' onclick="popUpMin()" />
+
+                                <input type='button' value='' class='qtyplus marginClass' field='quantity' onclick="popUp()" />
+                                  
+                               
+                                    <input type='text' name='@item.Name' value='0' class='qty' id="@item.Name" hidden />
+                     
+
+                                <input type='text' name='@item.Price' value='0' class='qq' id="@item.Price" hidden />
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+                        <div style="float: left;">
+                <table>
+                    <tr class="txtMult">
+                        <td>
+                            <h4>@Resource.KaartjesOverzicht</h4>
+                            <div id="typeNormalTicket"></div>
+                            <div id="typeKinderTicket"></div>
+                            <div id="typeStudentTicket"></div>
+                            <div id="type65Ticket"></div>
+                            <div id="typePopcornTicket"></div>
+                            <div id="typeLadiesTicket"></div>
+
+                            <h4>@Resource.Totaalprijs : </h4>
+                            <div id="totalPrice"></div>
+                            <input type='text' id="totalPrice" hidden />
+                        </td>
+                        <td>
+                            <div class="typeNormal" id="typeNormal"></div>
+                            <div class="typeKinder" id="typeKinder"></div>
+                            <div class="typeStudent" id="typeStudent"></div>
+                            <div class="type65" id="type65"></div>
+                            <div class="typePopcorn" id="typePopcorn"></div>
+                            <div class="typeLadies" id="typeLadies"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <input id="submitInput" type="submit" name="SaveButton" value="@Resource.Betalen" class="movie-detail-order-button2 " disabled/>
+        }
+
+    </div>
+</div>
+
+<script>
+    var arr = document.getElementsByClassName('qty');
+
+    function popUp() {
+        var pri = 1;
+        for (var i = 0; i < arr.length; i++) {
+                        pri += parseInt(arr[i].value);
+        }
+
+                    if (pri != 0) {
+            document.getElementById("submitInput").disabled = false;
+        }
+        else {
+            document.getElementById("submitInput").disabled = true;
+        }
+    }
+
+    function popUpMin() {
+        var pri = 0;
+        for (var i = 0; i < arr.length; i++) {
+            pri += parseInt(arr[i].value);
+        }
+                    pri = pri - 1;
+        if (pri > 0) {
+            document.getElementById("submitInput").disabled = false;
+        }
+        else {
+            document.getElementById("submitInput").disabled = true;
+        }
+    }
+
+
+    jQuery(document).ready(function () {
+        var totalPrice = 0;
+        // This button will increment the value
+        $('.qtyplus').click(function (e) {
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var inputId = $(this).next('.qty').attr("id");
+                        var currentPrice = $(this).next().next('.qq').attr("id");
+            var $this = $(this);
+            var $target = $this.next('input[name=' + inputId + ']');
+            var currentVal = parseInt($target.val());
+            currentPrice = currentPrice.replace(",", ".");
+            if (!isNaN(currentVal)) {
+                $target.val(currentVal + 1);
+                currentVal++;
+            } else {
+                $target.val(0);
+            }
+
+            //var normalval = document.getElementById("priceVal").value;
+            if (inputId == "Normaal" || inputId == "Normal") {
+
+                document.getElementById("typeNormal").innerHTML = inputId;
+                document.getElementById("typeNormalTicket").innerHTML = $target.val() + "x";
+
+                    var normalValue = parseFloat(currentPrice);
+                    totalPrice += normalValue;
+
+                }
+
+            if (inputId == "Kinderkaartje") {
+                document.getElementById("typeKinder").innerHTML = inputId;
+                document.getElementById("typeKinderTicket").innerHTML = currentVal + "x";
+                //document.getElementById("typeNormalTicket").innerHTML = ();
+                //$('#typeKinderTicket').Text(currentVal);
+                var kinderValue = parseFloat(currentPrice);
+                totalPrice += kinderValue;
+                //document.getElementById("totalPrice").innerHTML = currentVal * 7;
+            }
+
+            if (inputId == "Studentenkaartje") {
+                document.getElementById("typeStudent").innerHTML = inputId;
+                document.getElementById("typeStudentTicket").innerHTML = currentVal + "x";
+                var studentValue = parseFloat(currentPrice);
+                totalPrice += studentValue;
+            }
+
+
+            if (inputId == "Seniorenkaartje") {
+                document.getElementById("type65").innerHTML = inputId;
+                document.getElementById("type65Ticket").innerHTML = currentVal + "x";
+                var reductieValue = parseFloat(currentPrice);
+                totalPrice += reductieValue;
+            }
+            if (inputId == "Popcornarrangement") {
+
+                document.getElementById("typePopcorn").innerHTML = inputId;
+                document.getElementById("typePopcornTicket").innerHTML = currentVal + "x";
+
+                var popcornValue = parseFloat(currentPrice);
+                totalPrice += popcornValue;
+
+            }
+            if (inputId == "Ladiesnight") {
+
+                document.getElementById("typeLadies").innerHTML = inputId;
+                document.getElementById("typeLadiesTicket").innerHTML = currentVal + "x";
+
+                var ladiesValue = parseFloat(currentPrice);
+                totalPrice += ladiesValue;
+
+            }
+
+            document.getElementById("totalPrice").innerHTML = "€" + totalPrice;
+
+        });
+
+
+        // This button will decrement the value till 0
+        $(".qtyminus").click(function (e) {
+
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var inputId = $(this).next().next('.qty').attr("id");
+            var $this = $(this);
+            var currentPrice = $(this).next().next().next('.qq').attr("id");
+            var $target = $this.next().next('input[name=' + inputId + ']');
+            var currentVal = parseInt($target.val());
+            currentPrice = currentPrice.replace(",", ".");
+            if (!isNaN(currentVal)) {
+                $target.val((currentVal == 0) ? 0 : currentVal - 1);
+            } else {
+                $target.val(0);
+
+            }
+
+
+            if (inputId == "Normaal"  && currentVal != 0) {
+                document.getElementById("typeNormal").innerHTML = inputId;
+                document.getElementById("typeNormalTicket").innerHTML = $target.val() + "x";
+                var normalValue = parseFloat(currentPrice);
+                totalPrice -= normalValue;
+            }
+
+            if (inputId == "Kinderkaartje" && currentVal != 0) {
+                document.getElementById("typeKinder").innerHTML = inputId;
+                document.getElementById("typeKinderTicket").innerHTML = $target.val() + "x";
+                var kinderValue = parseFloat(currentPrice);
+                totalPrice -= kinderValue;
+            }
+            if (inputId == "Studentenkaartje" && currentVal != 0) {
+                document.getElementById("typeStudent").innerHTML = inputId;
+                document.getElementById("typeStudentTicket").innerHTML = $target.val() + "x";
+                var studentValue = parseFloat(currentPrice);
+                totalPrice -= studentValue;
+            }
+
+            if (inputId == "Seniorenkaartje" && currentVal != 0) {
+                document.getElementById("type65").innerHTML = inputId;
+                document.getElementById("type65Ticket").innerHTML = $target.val() + "x";
+                var reductieValue = parseFloat(currentPrice);
+                totalPrice -= reductieValue;
+            }
+
+            if (inputId == "Popcornarrangement" && currentVal != 0) {
+
+                document.getElementById("typePopcorn").innerHTML = inputId;
+                document.getElementById("typePopcornTicket").innerHTML = $target.val() + "x";
+
+                var popcornValue = parseFloat(currentPrice);
+                totalPrice -= popcornValue;
+
+            }
+            if (inputId == "Ladiesnight" && currentVal != 0) {
+
+                document.getElementById("typeLadies").innerHTML = inputId;
+                document.getElementById("typeLadiesTicket").innerHTML = $target.val() + "x";
+
+                var ladiesValue = parseFloat(currentPrice);
+                totalPrice -= ladiesValue;
+
+            }
+
+            if (totalPrice <= 0) {
+                totalPrice = 0;
+            }
+
+            
+                
+            
+            document.getElementById("totalPrice").innerHTML = "€" + totalPrice;
+        });
+    });
+
+</script>

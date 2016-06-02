@@ -1,0 +1,55 @@
+﻿@using Cinevans.Domain.Entities
+@model IEnumerable<Viewing>
+<div class="navbar-header">
+    <a href="@Url.Action("Index")"><div @(@ViewBag.Title=="Index" ? "class=navbar-header-btn-active" : "class=navbar-header-btn")>Eerstkomende films</div></a>
+    <a href="@Url.Action("Index3d")"><div @(@ViewBag.Title=="3D" ? "class=navbar-header-btn-active" : "class=navbar-header-btn")>3D</div></a>
+    <a href="@Url.Action("IndexWheelchair")"><div @(@ViewBag.Title=="Rolstoel vriendelijk" ? "class=navbar-header-btn-active" : "class=navbar-header-btn")>Rolstoel toegankelijk</div></a>
+    <a href="@Url.Action("IndexDutchMovies")"><div @(@ViewBag.Title=="Nederlandse films" ? "class=navbar-header-btn-active" : "class=navbar-header-btn")>Nederlandse films</div></a>
+</div>
+<div class="container-movie-list">
+    @foreach(var item in Model) {
+        <a href="@Url.Action("ViewingDetail",new { viewingId = item.ViewingId })">
+            <div class="movie">
+                <div class="movie-poster"><img src="@item.Movie.MovieImage" /></div>
+                <div class="movie-description">
+                    <div class="movie-description-content">
+                        @item.Movie.Titel (@item.Movie.Language)
+                        <br />
+                        @((item.StartTime.Hour < 10 ? "0" : "") + item.StartTime.Hour):@((item.StartTime.Minute < 10 ? "0" : "") + item.StartTime.Minute)
+                        <br />
+                        Zaal @item.RoomId
+                        <br />
+                        @item.Movie.Duration minuten
+                        @if(item.Movie.is3D) {
+                            <p>
+                                3D
+                            </p>
+                        }
+                        <div class="movie-icons">
+                            @switch(item.Movie.Age) {
+                                case 18:
+                                    <img src="~/Content/icons/ageIcon18.png" />
+                                    break;
+                                case 16:
+                                    <img src="~/Content/icons/ageIcon16.png" />
+                                    break;
+                                case 12:
+                                    <img src="~/Content/icons/ageIcon12.png" />
+                                    break;
+                                case 6:
+                                    <img src="~/Content/icons/ageIcon6.png" />
+                                    break;
+                                default:
+                                    <img src="~/Content/icons/ageIconAll.png" />
+                                    break;
+                            }
+                            @if(item.Room.Accessbility) {
+                                <img src="~/Content/icons/ageIconWheelchair.png" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@using Cinevans.Web.Controllers
+@{
+    ViewBag.Title = "Financieel";
+    IEnumerable<Cinevans.Domain.Entities.Movie> movies = ((ManagerController)this.ViewContext.Controller).GetAllMovies();
+}
+
+<div class="container">
+    <h2>Financieel overzicht</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Film</th>
+                <th>Omzet</th>
+                <th>Aantal voorstellingen</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in movies)
+            {
+                Double income = ((ManagerController)this.ViewContext.Controller).GetIncomeByMovieId(m.MovieId);
+                int viewings = ((ManagerController)this.ViewContext.Controller).GetAmountOfViewingsByMovieId(m.MovieId);
+                <tr>
+                    <td style="color:black">@m.Titel</td>
+                    <td style="color:black">€ @income</td>
+                    <td style="color:black">@viewings</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

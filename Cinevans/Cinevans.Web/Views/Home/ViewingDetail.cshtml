@@ -1,0 +1,123 @@
+﻿@model Cinevans.Domain.Entities.Viewing
+@using Cinevans.Web.Controllers
+@{
+    ViewBag.Title = "ViewingDetail";
+}
+
+<script>
+    (function (d, s, id) {
+        var js, stags = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";
+        stags.parentNode.insertBefore(js, stags);
+    })(document, 'script', 'imdb-rating-api');</script>
+
+<div class="movie-detail-back-button">
+    @Html.ActionLink(Resource.Terug, "Index")
+</div>
+<div class="movie-detail-order-button">
+    @Html.ActionLink(Resource.Kaartjes, "Rates", "Ticket", new { viewingId = Model.ViewingId }, null)
+</div>
+<div class="movie-detail">
+    <h1 class="movie-detail-title">@Model.Movie.Titel (@Model.Movie.Language)</h1>
+    <div class="movie-detail-poster"><img src="@Model.Movie.MovieImage" /></div>
+    <div class="movie-detail-description-web">
+        <div class="movie-description-content-web">
+            <iframe class="yt" width="427" height="240" src="@Model.Movie.MovieTrailerUrl" frameborder="0" allowfullscreen></iframe>
+            <div class="movie-description-content-details">
+                <br />
+                @Resource.Starttijd: @((Model.StartTime.Hour < 10 ? "0" : "") + Model.StartTime.Hour):@((Model.StartTime.Minute < 10 ? "0" : "") + Model.StartTime.Minute)
+                <br />
+                @Resource.Zaal: @Model.RoomId
+                <br />
+                @Resource.Lengte: @Model.Movie.Duration @Resource.Minuten
+                <br />
+                @Resource.Rollen: @foreach (var cast in Model.Movie.Casts)
+                {
+                    @cast.Name @:&nbsp;
+                }
+                    <br />
+                    @Resource.Regisseurs: @foreach (var director in Model.Movie.Directors)
+                {
+                    @director.Name @:&nbsp;
+                }
+                    <br />
+                    Genres: @foreach (var genre in Model.Movie.Genres)
+                {
+                    @genre.Name @:&nbsp;
+                }
+                    <br />
+                    @if (Model.Movie.is3D)
+                {
+                    <p>
+                        3D
+                    </p>
+                }
+            </div>
+        </div>
+        <div class="movie-detail-icons">
+            @switch (Model.Movie.Age)
+            {
+            case 18:
+            <img src="~/Content/icons/ageIcon18.png" />
+            break;
+            case 16:
+            <img src="~/Content/icons/ageIcon16.png" />
+            break;
+            case 12:
+            <img src="~/Content/icons/ageIcon12.png" />
+            break;
+            case 6:
+            <img src="~/Content/icons/ageIcon6.png" />
+            break;
+            default:
+            <img src="~/Content/icons/ageIconAll.png" />
+            break;
+            }
+            @if (Model.Room.Accessbility)
+            {
+            <img src="~/Content/icons/ageIconWheelchair.png" />
+            }
+        </div>
+        <div class="movie-detail-description-text">
+            @Resource.Beschrijving:
+            <br />
+            @Model.Movie.Description
+        </div>
+        <div class="imdb">
+            <span class="imdbRatingPlugin" data-user="ur65758820" data-title="tt1663202" data-style="p1">
+                <a href="@Model.Movie.ImdbLink">
+                    <img src="http://g-ecx.images-amazon.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png" />
+                </a>
+            </span>
+        </div>
+        <div>
+            <h3>Reviews</h3>
+            @{
+                IEnumerable<Cinevans.Domain.Entities.Review> reviews = ((HomeController)this.ViewContext.Controller).GetReviews(Model.MovieId);
+            }
+            @foreach (var r in reviews)
+            {
+                <div class="movie-detail-description-text">
+                    @r.ReviewMessage <br />
+                    @r.UserName
+                </div>
+            }
+            @if (User.IsInRole("Klant"))
+            {
+                <br />
+                <p>Review toevoegen</p>
+                <form action="@Url.Action("AddReviewViewing", "Home")" method="post">
+                    <input type="text" name="reviewMessage" style='color:black' size="80" />
+                    <input type="hidden" name="userName" value="@User.Identity.Name" />
+                    <input type="hidden" name="movieId" value="@Model.MovieId.ToString()" />
+                    <input type="submit" value="Toevoegen" class="btn inschreibButton" />
+                </form>
+            }
+        </div>
+    </div>    
+</div>

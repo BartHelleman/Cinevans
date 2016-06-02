@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Succes";
+}
+
+<div class="movie-detail">
+    <div>
+        <center>
+            <h3>Uw betaling is voltooid, u kunt nu uw kaartje(s) printen.</h3>
+            <a href="Index" data-file="DownloadTickets" class="file-download "><div class="movie-print-card-button">Klik hier om uw kaartje(s) te downloaden en terug te gaan naar de beginpagina.</div></a>
+        </center>
+    </div>
+</div>
+<script>
+        $(function () {
+            $('a.file-download').click(function () {
+                window.open($(this).data('file'));
+
+            });
+        });
+</script>

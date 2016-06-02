@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "SubscriptionSuccess";
+}
+
+<div class="Succes-pagina">
+    <h1>Abonnement aangemaakt</h1>
+    <a href="@Url.Action("Index", "Home")" data-file="DownloadSubscription" class="file-download"><div class="movie-print-card-button">Print abonnement</div></a>
+</div>
+
+<script>
+    $(function () {
+        $('a.file-download').click(function () {
+            window.open($(this).data('file'));
+
+        });
+    });
+</script>

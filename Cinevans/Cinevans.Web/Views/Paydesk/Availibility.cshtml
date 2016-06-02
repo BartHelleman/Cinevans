@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Cinevans.Domain.Entities.Room>
+@using Cinevans.Web.Controllers
+
+@{
+    ViewBag.Title = "Beschikbare plaatsen";
+    List<int> availableSeats = ((PaydeskController)this.ViewContext.Controller).GetAmountOfAvailableSeats();
+    int i = 1;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Zaalnummer
+        </th>
+        <th>
+            Aantal plaatsen
+        </th>
+    </tr>
+
+@foreach (var item in availableSeats)
+{
+    <tr>
+        <td>
+            @i
+        </td>
+        <td>
+            @item
+        </td>
+    </tr>
+    i++;
+}
+</table>

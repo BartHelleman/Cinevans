@@ -1,0 +1,257 @@
+﻿@font-face {
+    font-family: HNL;
+    src: url(HelveticaNeue-Thin.otf);
+}
+
+body {
+    background-color: #13172A;
+}
+
+body * {
+    color: #D9D7D6;
+    font-family: HNL;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #282828;
+}
+
+.navbar-header {
+    width: 100%;
+    font-size: 30px;
+}
+
+.navbar-header-btn, .navbar-header-btn-active {
+    display: inline-block;
+    margin: 16px;
+    padding: 16px 32px;
+    padding-bottom: 8px;
+}
+
+.navbar-header-btn {
+    border-bottom: 2px solid #13172A;
+}
+
+.navbar-header-btn:hover, .navbar-header-btn-active {
+    border-bottom: 2px solid #4A4D58;
+}
+
+.navbar-header-btn-txt {
+    font-size: 20px;
+    text-align: center;
+}
+
+.movie, .movie-poster, .movie-description {
+    display:inline-block;
+}
+
+.movie {
+    margin: 0px 16px 32px 16px;
+}
+
+.movie-poster, .movie-description {
+    width: 150px;
+    height: 200px;
+}
+
+.movie-poster {
+    background-color: #D9D7D6;
+}
+
+.movie-poster img {
+    width:100%;
+    height:100%;
+}
+
+.movie-icons img {
+    width: 20px;
+}
+
+.movie-description {
+    vertical-align: top;
+}
+
+.movie-description-content {
+    margin:8px;
+}
+
+.movie-detail-back-button {
+    float: left;
+}
+
+.movie-detail-order-button {
+    float: right;
+}
+
+.movie-detail-back-button, .movie-detail-order-button {
+    font-size: 30px;
+    background-color: #4A4D58;
+    border-radius: 8px;
+    text-align:center;
+    padding: 8px 16px 8px 16px;
+    margin: 16px;
+}
+
+.movie-print-card-button{
+    font-size: 50px;
+    background-color: #4a4d57;
+    border-radius: 8px;
+    text-align:center;
+    padding: 8px 16px 8px 16px;
+    margin: 16px;
+    height: 300px;
+    width: 630px;
+    color: #d9d7d6;
+}
+.movie-detail {
+    clear: both;
+    margin: 16px;
+}
+
+.movie-detail-poster {
+    display: inline-block;
+    background-color: red;
+    width: 25%;
+    min-width: 200px;
+}
+
+.movie-detail-poster img {
+    width: 100%;
+}
+
+.movie-detail-description {
+    vertical-align: top;
+    display: inline-block;
+    width: 74%;
+}
+
+.movie:hover .movie-description * {
+    color:#4A4D58;
+}
+
+.movie-detail-icons img {
+    width: 50px;
+}
+
+#pinfield {
+        width: 210px;
+        height: 95px;
+        text-align: center;
+        margin-right: 48px;
+        font-size: 7em;
+        background-color: #333;
+        margin-bottom: 40px;
+        float:left;
+    }
+
+    .selectBank {
+        width: 180px;
+        height: 50px;
+        color: black;
+        float: left;
+        margin-right: 80px;
+    }
+
+    .buttonsPayment {
+        float: left;
+    }
+
+    .round-button-circle1 {
+        background-color: red;
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        float: left;
+        margin-right: 20px;
+    }
+
+    .round-button-circle2 {
+        background-color: yellow;
+        color: black;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        float: left;
+        margin-right: 20px;
+
+    }
+
+    .round-button-circle3 {
+        background-color: green;
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        float: left;
+    }
+
+    .round-buttonStop {
+        padding-top: 23px;
+        font-weight: bold;
+        font-size: 1.6em;
+    }
+
+    .round-buttonCorr {
+        padding-top: 23px;
+        font-weight: bold;
+        font-size: 1.6em;
+    }
+
+    .round-buttonOk {
+        padding-top: 23px;
+        font-weight: bold;
+        font-size: 1.6em;
+    }
+
+    .payBlock {
+        width: 800px;
+        height: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input.qtyminus {
+        background-color: transparent;
+        background-image: url(/Images/min_icon.png);
+        background-repeat: no-repeat;
+        background-position: <left|right>;
+        padding-<left|right>: <width of image>px;
+            width: 70px;
+        height: 70px;
+        border:none;
+    }
+
+        input.qtyplus {
+        background-color: transparent;
+        background-image: url(/Images/plus_icon.png);
+        background-repeat: no-repeat;
+        background-position: <left|right>;
+        padding-<left|right>: <width of image>px;
+             width: 70px;
+        height: 70px;
+        border:none;
+    }
+
+.movie-poster2 {
+    float:left; 
+    width:280px; 
+    height: 400px; 
+    margin-right: 10px;
+}
+
+.marginClass {
+    margin-right: 10px;
+}
+
+.order-button2 {
+    margin-top: -185px; border:none;
+}
+
+.rowMargin {
+    height: 30px;
+}

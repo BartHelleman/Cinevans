@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Cinevans.Domain.Entities.Movie>
+@{
+    ViewBag.Title = "Movies";
+}
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<h2>@Resource.Films</h2>
+@using (Ajax.BeginForm("SortMovies", "Home",
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "container-movie-list-right"
+    }))
+    {
+<div class="leftbar">
+    <ul class="sort-button-list">
+        @Resource.Sorteeropties
+        <li><input id="sort-button-AZ" class="btn btn-info" type="submit" name="sort" value="a-z" /></li>
+        <li><input id="sort-button-ZA" class="btn btn-info" type="submit" name="sort" value="z-a" /></li>
+    </ul>
+</div>
+}
+<div id="container-movie-list-right">
+    @Html.Partial("_Movies", Model)
+    </div>
+    

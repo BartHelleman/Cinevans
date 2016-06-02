@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Succes";
+}
+<div class="Succes-pagina">
+    <h1>@Resource.BetaalingVoltooid</h1>
+    @ViewBag.Code
+    <a href="@Url.Action("Index", "Home")" data-file="DownloadTickets" class="file-download"><div class="movie-print-card-button">@Resource.PrintKaartje</div></a>
+    <a href="@Url.Action("SaveTicket", "Ticket")"><div class="movie-print-card-button">@Resource.PrintKaartjeBios</div></a>
+
+</div>
+
+<script>
+    $(function () {
+        $('a.file-download').click(function () {
+            window.open($(this).data('file'));
+
+        });
+    });
+</script>
